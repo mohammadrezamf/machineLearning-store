@@ -1,21 +1,46 @@
-import { Box, Button, colors, Typography } from "@mui/material";
+/* eslint-disable jsx-a11y/alt-text */
+import { Box, Button, colors, styled, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
 import { shadows } from "@mui/system";
 import React from "react";
-import { Link } from "react-router-dom";
-import courseImg from "../../assets/1.png";
+import { useNavigate } from "react-router-dom";
+import machineLearning from "../../assets/machinelearning-b.jpg";
+
+
+const ButtonStyle = styled(Button)((theme) => ({
+  transition: "all 0.3s",
+  boxSizing: "borderBox",
+  backgroundColor: "#fff",
+  color: "#000",
+  // border: "0.5px solid #fff",
+  fontSize: "14px",
+  "&:hover": {
+    // backgroundImage: "linear-gradient(120deg, #f093fb 0%, #f5576c 100%)",
+    fontSize: "14px",
+    // backgroundColor: "#fff",
+    // border: "0.5px solid #fff",
+    color: "#000",
+    boxSizing: "borderBox",
+  },
+}));
+
 export default function Course() {
+  const navigate = useNavigate();
   return (
     <Box
       pb={2}
       sx={{
         borderRadius: "5px",
         mx: "auto",
-        boxShadow: 3,
+        boxShadow: 1,
         overflow: "hidden",
       }}
     >
-      <img src={courseImg} style={{ width: "300px" }} />
+      <img
+        src={machineLearning}
+        style={{ width: "100%", height: "200px" }}
+        alt="course-machineLearning"
+      />
       <Stack spacing={2} sx={{ px: 2, pt: 3 }}>
         <Typography color="#000" variant="h5" sx={{ textAlign: "right" }}>
           آموزش پایتون
@@ -28,20 +53,14 @@ export default function Course() {
           در این اموزش شما با موارد مورد نیاز برای ماشین لرنینگ آشنا میشوید
         </Typography>
 
-        <Button
+        <ButtonStyle
           size="small"
           color="inherit"
           variant="contained"
-          sx={{
-            backgroundColor: "#1f2937",
-          }}
+          onClick={() => navigate("/course-detail")}
         >
-          <Link to="/course-detail" style={{ textDecoration: "none" }}>
-            <Typography variant="h6" color="#fff">
-              مشاهده
-            </Typography>
-          </Link>
-        </Button>
+          مشاهده
+        </ButtonStyle>
       </Stack>
     </Box>
   );

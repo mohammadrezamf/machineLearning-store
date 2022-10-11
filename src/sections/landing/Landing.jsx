@@ -59,7 +59,6 @@ const Arr = [
 ];
 // styles
 const ButtonStyle = styled(Button)((theme) => ({
-  // -Webkit-Box-Shadow:" 0px 15px 23px 12px #FCCCCC",
   boxShadow: "0px 12px 23px 5px #FCCCCC",
   transition: "all 0.3s",
   backgroundColor: "#F53838",

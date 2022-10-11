@@ -1,39 +1,32 @@
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
+import { useSelector } from "react-redux";
 import Course from "./Course";
 
 export default function CourseList() {
+  const courses = useSelector((state) => state.courses);
+  console.log(courses);
   return (
     <Box
       maxWidth="lg"
       sx={{
         mx: "auto",
         border: "1px dashed #999",
-        p: 10,
+        px: 2,
+        py: 2,
+        mb: 10,
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
       <Grid
-        spacing={3}
         container
-        sx={{
-          justifyContent: "space-between",
-          pr: 2,
-        }}
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 12, sm: 8, md: 12 }}
       >
-        <Grid
-          item
-          xs={3}
-          alignItems="center"
-          textAlign="center"
-          justifyContent="center"
-        >
-          <Course />
-        </Grid>
-        {[1, 2, 3, 4, 5].map(() => (
-          <Grid item xs={3} justifyContent="center" alignItems="center ">
+        {Array.from(Array(6)).map((_, index) => (
+          <Grid item xs={12} sm={4} md={3} key={index}>
             <Course />
           </Grid>
         ))}
